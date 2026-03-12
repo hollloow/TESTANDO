@@ -6,26 +6,33 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] int moveSpeed;
+    [SerializeField] private GameObject atack;
     Vector2 movement;
-    Rigidbody2D rb;
+    Rigidbody2D _rb;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     public void SetMovement (InputAction.CallbackContext value)
     {
         movement = value.ReadValue<Vector2>();
+        
     }
     public void SetJump (InputAction.CallbackContext value)
     {
-        rb.AddForce(Vector2.up * 100);
+        _rb.AddForce(Vector2.up * 100);
+    }
+
+    public void SetAtack(InputAction.CallbackContext value)
+    {
+        if (atack.)
     }
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveSpeed * Time.deltaTime * movement.x, rb.linearVelocity.y);
+        _rb.linearVelocity = new Vector2(moveSpeed * Time.deltaTime * movement.x, _rb.linearVelocity.y);
     }
 
 }
